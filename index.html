@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World with reCAPTCHA</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <form id="myForm" action="submit.php" method="POST">
+        <div class="g-recaptcha" data-sitekey="TU_CLAVE_DE_SITIO"></div>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var response = grecaptcha.getResponse();
+            if (response.length === 0) {
+                event.preventDefault();
+                alert('Please complete the reCAPTCHA.');
+            }
+        });
+    </script>
+</body>
+</html>
